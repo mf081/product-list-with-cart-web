@@ -1,36 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <title>Mateus Fernando | Product List with Cart</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/css/style.css" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-</head>
-<body>
-  <main class="container">
-    <!-- Seção de Produtos -->
-    <section class="products">
-      <h1>Desserts</h1>
-      <ul class="product-list">
-        <!-- Os produtos serão renderizados dinamicamente aqui pelo TypeScript -->
-      </ul>
-    </section>
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Product List Cart</title>
+  </head>
 
-    <!-- Seção do Carrinho -->
-    <aside class="cart">
-      <h2>Your Cart (0)</h2>
-      <!-- Os itens do carrinho serão renderizados aqui -->
-      <div class="cart-items"></div>
-      <p>Total <strong>$0.00</strong></p>
-      <button class="btn-confirm-order">Confirm Order</button>
-    </aside>
-  </main>
-  <script src="js/app.js" type="module"></script>
-</body>
+  <body>
+    <main>
+      <div class="header-products">
+        <h2>Desserts</h2>
+      </div>
+
+      <div id="main-id">
+        <!-- post adicionado dinamicamente -->
+      </div>
+
+        <div class="cart">
+          <div class="header-cart">Your Cart</div>
+        </div>
+    </main>
+
+    <script type="module" src="src/entites/product.ts"></script>
+    <script type="module" src="src/app.ts"></script>
+  </body>
 </html>

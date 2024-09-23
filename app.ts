@@ -57,8 +57,8 @@ class Carrinho {
   }
 
   atualizarCarrinho() {
-    const carrinhoContainer = document.querySelector(".cart") as HTMLElement;
-    const totalElement = carrinhoContainer.querySelector("p strong") as HTMLElement;
+    const carrinhoContainer = document.querySelector(".cart-items") as HTMLElement;
+    const totalElement = document.querySelector(".cart p strong") as HTMLElement;
     const itensContainer = carrinhoContainer.querySelectorAll(".cart-item");
 
     itensContainer.forEach(item => item.remove());
@@ -73,11 +73,11 @@ class Carrinho {
         <p class="cart-item-price"><strong>${quantidade}x</strong> @ $${produto.price.toFixed(2)} $${(quantidade * produto.price).toFixed(2)}</p>
       `;
       total += quantidade * produto.price;
-      carrinhoContainer.insertBefore(itemContainer, totalElement);
+      carrinhoContainer.appendChild(itemContainer);
     });
 
     totalElement.textContent = `$${total.toFixed(2)}`;
-    const totalItemsElement = carrinhoContainer.querySelector("h2") as HTMLElement;
+    const totalItemsElement = document.querySelector(".cart h2") as HTMLElement;
     totalItemsElement.textContent = `Your Cart (${this._itens.reduce((acc, item) => acc + item.quantidade, 0)})`;
   }
 }
@@ -110,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const target = event.target as HTMLElement;
     if (target.classList.contains("btn-add-to-cart")) {
       const productId = target.closest(".product-item")?.id;
+      console.log(`Adicionando produto com ID: ${productId}`);
       const produto = produtos.find(p => p.id === productId);
       if (produto) {
         carrinho.adicionarProduto(produto);
