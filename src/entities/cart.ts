@@ -1,27 +1,20 @@
-import { Product } from "./product";
+import { Product } from "./products"
 
 export class Cart {
-
     private _products: Product[] = [];
     private _total: number = 0;
+    
+    get products() {
+        return this._products;
+    }
 
-    addToCart(product: Product){
-        const productInCart = this._products.includes(product);
+    get total() {
+        return this._total
+    }
 
-
-        if (!productInCart) {
-            this._products.push(product);
-        }
-
+    addToCart(product: Product) {
         this._total += product.price;
         this._products.push(product);
     }
-    get products(){
-        return this._products
-    }
 
-    get total (){
-        return this._total;
-    }
 }
-

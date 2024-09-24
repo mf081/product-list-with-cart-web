@@ -1,39 +1,72 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Metadados e links de estilos -->
+    
+    <!-- Definindo o tipo de documento como HTML5 -->
     <meta charset="UTF-8" />
+    
+    <!-- Configura o layout para ser responsivo em diferentes dispositivos -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/css/style.css" />
-
-      <link
+    
+    <!-- Link para o arquivo CSS local -->
+    <link rel="stylesheet" href="./src/css/index.css" />
+    
+    <!-- Link para a biblioteca de ícones Font Awesome -->
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Link para a fonte Red Hat Text do Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700&display=swap"
       rel="stylesheet"
     />
+    
+    <!-- Título da página que aparecerá na aba do navegador -->
     <title>Product List Cart</title>
   </head>
 
   <body>
-    <main>
-      <div class="header-products">
-        <h2>Desserts</h2>
-      </div>
-
-      <div id="main-id">
-        <!-- post adicionado dinamicamente -->
-      </div>
-
-        <div class="cart">
-          <div class="header-cart">Your Cart</div>
+    <!-- Estrutura principal da página -->
+    <main id="main-id">
+      
+      <!-- Seção principal que contém os produtos -->
+      <div class="container-principal">
+        
+        <!-- Cabeçalho da seção de produtos -->
+        <div class="header-products">
+          <h2>Desserts</h2> <!-- Título da seção de produtos -->
         </div>
+        
+        <!-- Área onde os cartões de produtos serão inseridos dinamicamente -->
+        <div id="cards" class="cards">
+          <!-- Conteúdo de produtos será gerado dinamicamente -->
+        </div>
+      </div>
+      
+      <!-- Seção do carrinho de compras -->
+      <div class="cart">
+        
+        <!-- Cabeçalho do carrinho de compras -->
+        <div class="header-cart">Your Cart</div>
+        
+        <!-- Conteúdo do carrinho -->
+        <div class="cart-content">
+          
+          <!-- Imagem exibida quando o carrinho está vazio -->
+          <div class="image-if-empty">
+            <img src="./src/images/empty-cart.svg" alt="Empty Cart Image" />
+          </div>
+          
+          <!-- Mensagem exibida quando o carrinho está vazio -->
+          <div class="show-if-empty">Your added items will appear here</div>
+        </div>
+      </div>
     </main>
 
-    <script type="module" src="src/entites/product.ts"></script>
-    <script type="module" src="src/app.ts"></script>
+    <!-- Script principal da aplicação, escrito em TypeScript -->
+    <script type="module" src="./src/app.ts"></script>
   </body>
 </html>

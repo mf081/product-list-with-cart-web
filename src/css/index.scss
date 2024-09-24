@@ -1,22 +1,33 @@
+$main-color: hsl(14, 86%, 42%);
+$second-color: hsl(159, 69%, 38%);
+$rose-50: hsl(20, 50%, 98%);
+$rose-100: hsl(13, 31%, 94%);
+$rose-300: hsl(14, 25%, 72%);
+$rose-400: hsl(7, 20%, 60%);
+$rose-500: hsl(12, 20%, 44%);
+$rose-900: hsl(14, 65%, 9%);
+$red-hat-text: "Red Hat Text", sans-serif;
+$white: #fff;
+
 * {
   margin: 0px;
   padding: 0px;
-  font-family: "Red Hat Text", sans-serif;
+  font-family: $red-hat-text;
 }
 
 main {
   display: flex;
   flex-direction: row;
-  background-color: #fcf8f5;
+  background-color: $rose-100;
   margin: 0px;
   padding: 0px;
-  max-width: 1440px;
-  margin: 0 auto; /* Isso centraliza o conteúdo */
-  justify-content: center; /* Alinha o conteúdo ao centro */
+  height: 100%;
+  width: 100%;
 }
 
 .header-products {
   padding: 10px;
+  padding-top: 20px;
 }
 
 .container-principal {
@@ -25,7 +36,7 @@ main {
   margin-left: 20px;
   padding: 10px;
   gap: 20px;
-  align-items: center; /* Centraliza o conteúdo internamente */
+  //   height: 100%;
 }
 
 .cards {
@@ -33,7 +44,6 @@ main {
   flex-flow: row wrap;
   width: 700px;
   height: 100%;
-  justify-content: center; /* Centraliza os cards horizontalmente */
 }
 
 .product-card {
@@ -44,12 +54,12 @@ main {
   gap: 5px;
   padding: 10px;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .product-image {
   width: 100%;
-  height: 300px;
+  height: 200px;
   position: relative;
 }
 
@@ -69,38 +79,40 @@ main {
 
 .product-category {
   font-size: 12px;
-  color: hsl(12, 20%, 44%);
+  color: $rose-500;
 }
 
-.product-title {
+.product-name {
   font-weight: bold;
   font-size: 16px;
 }
 
 .product-price {
-  color: hsl(14, 86%, 42%);
+  color: $main-color;
   font-size: 12px;
 }
 
 .add-cart-btn {
-  background-color: #fff;
+  background-color: $white;
   border-radius: 20px;
   display: flex;
   flex-direction: row;
   gap: 5px;
   justify-content: center;
   width: 100px;
-  border: 1px solid hsl(14, 86%, 42%);
+  border: 1px solid $main-color;
   padding: 5px;
   align-items: center;
   position: absolute;
   transform: translate(-50%, -50%);
+  /* transform: translateX(-50%); */
   left: 50%;
   bottom: 25%;
+  /* bottom: 95px; */
 }
 
 .add-cart-btn i {
-  color: hsl(14, 86%, 42%);
+  color: $main-color;
 }
 
 .add-cart-btn span {
@@ -108,41 +120,28 @@ main {
 }
 
 .cart {
-  background-color: #fff;
+  background-color: $white;
   height: 200px;
   width: 250px;
   padding: 10px;
   border-radius: 5%;
-  position: relative;
-  margin-top: 2%;
-}
-
-.cart-content {
+  margin-top: 3%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  align-content: center;
-  position: relative;
-}
-
-.image-if-empety svg {
-  position: absolute;
-  background-color: #fff;
-  transform: translateY(0%);
-  right: 25%;
 }
 
 .header-cart {
   padding: 10px;
-  background-color: #fff;
+  //   background-color: $white;
   font-weight: bold;
-  color: hsl(14, 86%, 42%);
+  color: $main-color;
+  align-self: flex-start;
 }
 
 .show-if-empty {
-  background-color: #fff;
-  margin-top: 50%;
+  //   background-color: $white;
   padding: 5px;
   font-size: 12px;
 }
