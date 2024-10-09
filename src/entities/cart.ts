@@ -1,26 +1,84 @@
-// Importando a classe Product para que a classe Cart possa trabalhar com produtos
-import { Product } from "./products";
+import { Product } from "./product";
 
-// Definindo a classe Cart para representar um carrinho de compras
 export class Cart {
-    // Array privado para armazenar os produtos no carrinho
-    private _products: Product[] = [];
-    // Variável privada para armazenar o total do carrinho
-    private _total: number = 0;
-    
-    // Getter para acessar a lista de produtos no carrinho
-    get products() {
-        return this._products; // Retorna a lista de produtos
+  private static _products: Product[] = [];
+  private static _orderTotal: number = 0;
+  private static _totalQuantity: number = 0;
+
+  static calculateTotal() {
+    this._orderTotal = 0;
+    this._totalQuantity = 0;
+
+    for (const product of this.products) {
+      this._orderTotal += product.total;
+      this._totalQuantity += product.quantity;
+    }
+  }
+
+  static removeProduct(product: Product) {
+    // Remove um produto do carrinho, filtrando pelo produto em questão
+    this._products = this._products.filter((item) => item.id !== product.id);
+    this.calculateTotal();
+  }
+
+  static addToCart(product: Product) {
+    const productInCart = this._products.includes(product);
+
+    if (!productInCart) {
+      this._products.push(product);
     }
 
-    // Getter para acessar o total do carrinho
-    get total() {
-        return this._total; // Retorna o total acumulado
+    this.calculateTotal();
+
+    // Atualiza o carrinho de compras no HTML
+    this.toHTML();
+    // console.log(Cart._products);
+  }
+
+  static toHTML() {
+    const cartContainerHTML = document.getElementById("cart-container");
+
+    if (!cartContainerHTML) return;
+
+    const totalQuantityHTML = cartContainerHTML.querySelector(
+      "#total-quantity-text"
+    );
+
+    if (!totalQuantityHTML) return;
+    totalQuantityHTML.textContent = this._totalQuantity.toString();
+
+    let ulProductsHTML = cartContainerHTML.querySelector("ul");
+
+    if (ulProductsHTML) {
+      ulProductsHTML.innerHTML = "";
+    } else {
+      ulProductsHTML = document.createElement("ul");
     }
 
-    // Método para adicionar um produto ao carrinho
-    addToCart(product: Product) {
-        this._total += product.price; // Adiciona o preço do produto ao total
-        this._products.push(product);  // Adiciona o produto ao array de produtos
+    for (const product of this._products) {
+      const liProductHTML = document.createElement("li");
+
+      const productHTML = `
+        <span>${product.name}</span>
+        <div>
+          <span>${product.quantity}x</span>
+          <span>@$${product.price}</span>
+          <span>$${product.total}</span>
+        </div>
+      `;
+
+      liProductHTML.innerHTML = productHTML;
+      ulProductsHTML.appendChild(liProductHTML);
     }
+
+    cartContainerHTML.appendChild(ulProductsHTML);
+  }
+
+  static get products() {
+    return this._products;
+  }
+
+  static get total() {
+    return this._orderTotal;
+  }
 }

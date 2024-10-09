@@ -1,23 +1,32 @@
-// Importando os dados do arquivo JSON
-import data from "../data.json"; // Não utilizamos chaves porque estamos importando um dado bruto, não uma exportação específica
+// importar data.json
+// importar entities/product.ts
+// Criar os objetos de produto utilizando os
+// dados de data.json
 
-// Importando as classes Product e Cart de suas respectivas entidades
-import { Product } from "./entities/products"; // Classe Product para criar e manipular produtos
-import { Cart } from "./entities/cart";       // Classe Cart para gerenciar o carrinho de compras
+import { Product } from "./entities/product";
+import data from "../data.json";
+import { Cart } from "./entities/cart";
 
-// Loop para criar e renderizar os objetos de produtos com base nos dados importados
-for (let i = 0; i < data.length; i++) {
-  // Extraindo os dados do JSON para cada produto
-  const nome = data[i].name;
-  const category = data[i].category;
-  const price = data[i].price;
-  const imageUrl = data[i].image.desktop;
-
-  // Criando uma instância da classe Product com os dados extraídos
-  const product = new Product(nome, category, price, imageUrl);
-
-  // Chamando o método renderProducts para exibir os produtos na interface
-  product.renderProducts();
+for (const product of data) {
+  new Product(
+    product.name,
+    product.category,
+    product.price,
+    product.image.desktop
+  ).toHTML();
 }
 
+/*
+const product1 = new Product("Banana", "Fruta", 10, "http://example.com");
+product1.incrementQuantity();
+product1.incrementQuantity();
+product1.incrementQuantity();
 
+const product2 = new Product("Maçã", "Fruta", 5, "http://example.com");
+product2.incrementQuantity();
+product2.incrementQuantity();
+console.log(Cart);
+
+Cart.removeProduct(product2);
+console.log(Cart);
+*/

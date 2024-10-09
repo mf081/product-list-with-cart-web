@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @use "_components";
+
+@font-face {
+  font-family: "Red Hat Text";
+  src: url("../../assets/fonts/RedHatText-VariableFont_wght.ttf")
+    format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  width: 200px;
+  height: 250px;
+  background-color: grey;
+  position: relative;
+}
+
+.button {
+  padding: 15px 20px;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+body {
+  font-family: "Red Hat Text", sans-serif;
+}

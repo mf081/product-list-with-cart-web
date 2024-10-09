@@ -1,0 +1,16 @@
+@use "_variables";
+
+.product-name {
+  font-weight: 600;
+  color: $text-color-1;
+}
+
+.product-category {
+  font-size: 14px;
+  color: $text-color-2;
+}
+
+.product-price {
+  color: $primary-color;
+  font-weight: 700;
+}
