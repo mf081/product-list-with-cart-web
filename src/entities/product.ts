@@ -26,27 +26,22 @@ export class Product {
     productHTML.id = this._id;
 
     productHTML.innerHTML = `
-        <div class="rounded-xl overflow-hidden flex flex-col border border-black h-[270px] w-[250px]">
+        <div class="rounded-xl overflow-hidden flex flex-col border border-black h-[300px] w-[200px] ">
           <div class="mb-10 relative h-full bg-red-500">
-            <div class="">img</div>
-            <button id="button-add-to-cart" type="button" class="button rounded-lg text-white font-medium text-xs bg-red-400">Add to
-              Cart</button>
+            <img src="${this._imageUrl}" alt="${this._name}" class="object-cover h-full w-full" />
+            <button id="button-add-to-cart" type="button" class="button rounded-lg text-xs">Add to Cart</button>
           </div>
 
           <div class="flex flex-col">
             <span class="product-category">${this._category}</span>
-            <span class="product-name text-xl font-medium">${this._name}</span>
-            <span class="product-price">$${this._price}</span>
+            <span class="product-name">${this._name}</span>
+            <span class="product-price">R$${this._price.toFixed(2)}</span>
           </div>
         </div>
     `;
 
-    const buttonAddToCartHTML = productHTML.querySelector(
-      "#button-add-to-cart"
-    );
-    buttonAddToCartHTML?.addEventListener("click", () =>
-      this.incrementQuantity()
-    );
+    const buttonAddToCartHTML = productHTML.querySelector("#button-add-to-cart");
+    buttonAddToCartHTML?.addEventListener("click", () => this.incrementQuantity());
 
     productListHTML.appendChild(productHTML);
   }
@@ -74,8 +69,6 @@ export class Product {
   incrementQuantity() {
     this._quantity++;
     this.calculateTotal();
-    // console.log(`quantity:`, this._quantity);
-
     Cart.addToCart(this);
   }
 
