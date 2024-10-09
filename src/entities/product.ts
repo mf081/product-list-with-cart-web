@@ -26,7 +26,7 @@ export class Product {
     productHTML.id = this._id;
 
     productHTML.innerHTML = `
-        <div class="rounded-xl overflow-hidden flex flex-col border border-black h-[300px] w-[200px] ">
+        <div class="rounded-xl overflow-hidden flex flex-col border border-black h-[300px] w-[230px] ">
           <div class="mb-10 relative h-full bg-red-500">
             <img src="${this._imageUrl}" alt="${this._name}" class="object-cover h-full w-full" />
             <button id="button-add-to-cart" type="button" class="button rounded-lg text-xs">Add to Cart</button>
