@@ -1,14 +1,14 @@
-import { v4 as uuidv4 } from "uuid";
-import { Cart } from "./cart";
+import { v4 as uuidv4 } from "uuid"; // Importa a função para gerar IDs únicos
+import { Cart } from "./cart"; // Importa a classe Cart
 
 export class Product {
-  private _id: string = uuidv4();
-  private _name: string;
-  private _category: string;
-  private _price: number;
-  private _imageUrl: string;
-  private _quantity: number = 0;
-  private _total: number = 0;
+  private _id: string = uuidv4(); // ID único para cada produto
+  private _name: string; // Nome do produto
+  private _category: string; // Categoria do produto
+  private _price: number; // Preço do produto
+  private _imageUrl: string; // URL da imagem do produto
+  private _quantity: number = 0; // Quantidade do produto no carrinho
+  private _total: number = 0; // Total acumulado do produto (quantidade * preço)
 
   constructor(name: string, category: string, price: number, imageUrl: string) {
     this._name = name;
@@ -26,19 +26,19 @@ export class Product {
     productHTML.id = this._id;
 
     productHTML.innerHTML = `
-        <div class="rounded-xl overflow-hidden flex flex-col border border-black h-[300px] w-[230px] ">
-          <div class="mb-10 relative h-full bg-red-500">
-            <img src="${this._imageUrl}" alt="${this._name}" class="object-cover h-full w-full" />
-            <button id="button-add-to-cart" type="button" class="button rounded-lg text-xs">Add to Cart</button>
-          </div>
-
-          <div class="flex flex-col">
-            <span class="product-category">${this._category}</span>
-            <span class="product-name">${this._name}</span>
-            <span class="product-price">R$${this._price.toFixed(2)}</span>
-          </div>
-        </div>
-    `;
+    <div class="product-card">
+      <div class="product-image-container">
+        <img src="${this._imageUrl}" alt="${this._name}" class="product-image" />
+        <button id="button-add-to-cart" type="button" class="button-add-to-cart">Add to Cart</button>
+      </div>
+  
+      <div class="product-info">
+        <span class="product-category">${this._category}</span>
+        <span class="product-name">${this._name}</span>
+        <span class="product-price">R$${this._price.toFixed(2)}</span>
+      </div>
+    </div>
+  `;
 
     const buttonAddToCartHTML = productHTML.querySelector("#button-add-to-cart");
     buttonAddToCartHTML?.addEventListener("click", () => this.incrementQuantity());
