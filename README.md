@@ -47,6 +47,6 @@ $ cd product-list-cart
 
 ## 🌐 Acesse a Aplicação
 
-Você pode acessar a versão online da aplicação através deste link: [Product List with Cart](https://seu-link-para-o-projeto.com).
+Você pode acessar a versão online da aplicação através deste link: [Product List with Cart](https://desserts-web.netlify.app/).
 
 By [Seu Nome]
