@@ -40,7 +40,7 @@ Para clonar e executar este projeto localmente, siga os seguintes passos:
 $ git clone https://github.com/mf081/product-list-with-cart-web.git
 
 # Entre no diretório do projeto
-$ cd product-list-cart
+$ cd product-list-with-cart-web
 
 # Abra o arquivo index.html em seu navegador.
 ```
